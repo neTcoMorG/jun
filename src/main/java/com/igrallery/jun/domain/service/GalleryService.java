@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface GalleryService {
 
-    void create (GalleryForm form);
+    Long create (GalleryForm form);
     void uploadImages (Integer gid, List<MultipartFile> images, List<Size> sizes);
 
 }

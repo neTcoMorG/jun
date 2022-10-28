@@ -17,8 +17,8 @@ public class GalleryServiceImpl implements GalleryService {
     private final GalleryRepository galleryRepository;
 
     @Override
-    public void create (GalleryForm form) {
-        galleryRepository.save(new Gallery(form.getName(), form.getSub()));
+    public Long create (GalleryForm form) {
+        return galleryRepository.save(new Gallery(form.getName(), form.getSub())).getId();
     }
 
     @Override

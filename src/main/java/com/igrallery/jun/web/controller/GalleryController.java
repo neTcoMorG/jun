@@ -23,9 +23,9 @@ public class GalleryController {
     private final GalleryRepository galleryRepository;
 
     @PostMapping
-    public String createGallery (@RequestBody @Valid GalleryForm form) {
-        galleryService.create(form);
-        return "redirect://";
+    public String createGallery (@ModelAttribute @Valid GalleryForm form) {
+        Long id = galleryService.create(form);
+        return "redirect:/tool/" + id;
     }
     
     @GetMapping("{id}")

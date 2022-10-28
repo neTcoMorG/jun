@@ -1,3 +1,4 @@
+
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <style>
@@ -5,13 +6,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
     </style>
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/index.css" />
 </head>
 <body>
 <div class="container">
     <div class="intro">
-        <video src="./css/bgMovie.mp4" muted autoplay loop></video>
+        <video src="/css/bgMovie.mp4" muted autoplay loop></video>
         <div class="intro-content fade-in-box ">
             <div class="title">
                 <h1>iGallery</h1>
@@ -20,7 +21,7 @@
                         여러분의 추억이자 낭만입니다<br/>
                         나만의 갤러리를 남들과 공유하세요
                     </span> <br/>
-                <button class="intro-btn">
+                <button class="intro-btn button1">
                     시작하기
                 </button>
             </div>
@@ -35,7 +36,7 @@
             </ul>
         </div>
         <div class="article-projects">
-            <div class="project" >
+            <div class="project" onclick="modal_processor()">
                 <h1>+</h1>
             </div>
             <div th:each="gallery : ${gallerys}" class="project">
@@ -43,7 +44,20 @@
             </div>
         </div>
     </div>
+    <div class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+                <h1>HI modal</h1>
+                <form class="modal-item" method="post" action="/gallery">
+                    <input name="name" class="modal-g-title" type="text" placeholder="갤러리 이름">
+                    <textarea name="sub" placeholder="설명">
+                        
+                    </textarea>
+                    <button class="button2" type="submit">생성하기</button>
+                </form>
+        </div>
+    </div>
 </div>
-<script src="./js/index.js"></script>
+<script src="/js/index.js"></script>
 </body>
 </html>
