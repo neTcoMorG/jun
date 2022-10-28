@@ -16,7 +16,7 @@
                 <button class="item-box-text" onclick="expend(event);">
                     <span>레이아웃 아이템</span>
                 </button>
-                <div class="item-box-content layout hidden">
+                <div id="itemBox" class="item-box-content layout">
                     <div id="item5" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="item item5" draggable="true"></div>
                     <div id="item4" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="item item4" draggable="true"></div>
                     <div id="item3" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="item item3" draggable="true"></div>
@@ -31,6 +31,9 @@
                 <div class="item-box-content hidden" id="picker">
                     <div class="picker"></div>
                 </div>
+            </div>
+            <div class="item-btn">
+                <button onclick="sendImages();">저장하기</button>
             </div>
         </div>
     </div>
@@ -53,17 +56,19 @@
         </div>
     </div>
     <div id="hidden-form">
-        <form>
-            <input type="file" id="file" name="file"  class="template" onchange="loadImage(this)"/>
+        <form id="hidden-form-obj">
+            <input type="file" id="file" name="images" class="template" onchange="loadImage(this)"/>
         </form>
     </div>
     
-    <script type="text/javascript" src="/js/manage.js"></script>
-    <script type="text/javascript" src="/js/common.js"></script>
-
-
     <!-- CodeMirror codes -->
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
     <script src="/js/colorPicker.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/manage.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
 </body>
 </html>

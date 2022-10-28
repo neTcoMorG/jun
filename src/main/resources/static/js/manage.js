@@ -20,7 +20,7 @@ function drop_handler(ev) {
 
     const id = ev.dataTransfer.getData("text");
     const nodeCopy = document.getElementById("r-" + id).cloneNode(true);
-    const formRoot = document.querySelector("#hidden-form");
+    const formRoot = document.querySelector("#hidden-form-obj");
     const formCopy = document.getElementById("file").cloneNode(true);
 
 
@@ -31,10 +31,7 @@ function drop_handler(ev) {
 
     ev.target.appendChild(nodeCopy);
     formRoot.appendChild(formCopy);
-
-    sizes.push(getSize(id));
     auto_scrollDown();
-    console.log(sizes);
 }
    
 function dragend_handler(ev) {
@@ -67,6 +64,8 @@ function loadImage(input) {
             target.classList.add("img-attach");
         }
         render.readAsDataURL(input.files[0]);
+        console.log(target.classList);
+        sizes.push(getSize(target.classList[0]));
     }
 }
 
@@ -74,23 +73,44 @@ function loadImage(input) {
     사이즈 배열과 사진을 전송하는거다 to 서버에
 
 */
-function sendImage() {
-    
-}
 
 function getSize(itemName) {
     switch(itemName) {
         case "item1":
-            return {width: 1, height: 1};
+            return "ITEM1"
         case "item2":
-            return {width: 2, height: 1};
+            return "ITEM2"
         case "item3":
-            return {width: 1, height: 2};
+            return "ITEM3"
         case "item4":
-            return {width: 2, height: 2};
+            return "ITEM4"
         case "item5":
-            return {width: 3, height: 1};
+            return "ITEM5"
         default:
-            console.log("운지");
+            console.log("NONE");
     }
+}
+
+function sendImages() {
+    const currentUrl = window.location.href;
+    const gid = currentUrl.split('tool/')[1];
+
+    let formData = new FormData($('#hidden-form-obj')[0]);
+    formData.append("items", new Blob([JSON.stringify(sizes)], {
+        type: "application/json"
+    }));
+
+    $.ajax({
+        type: 'post',
+        url: '/tool/' + gid,
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: () => {
+            alert("성공");
+        },
+        error: (err) => {
+            console.log(err)
+        }
+    });
 }

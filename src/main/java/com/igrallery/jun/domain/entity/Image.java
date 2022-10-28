@@ -10,9 +10,10 @@ public class Image {
 
     protected Image() {}
 
-    public Image(Gallery gallery, ItemType itemType, String originalName, String savedName, String path) {
+    public Image(Gallery gallery, ItemType itemType, Integer priority, String originalName, String savedName, String path) {
         this.itemType = itemType;
         this.gallery = gallery;
+        this.priority = priority;
         this.originalName = originalName;
         this.savedName = savedName;
         this.path = path;
@@ -20,6 +21,7 @@ public class Image {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "GID") private Gallery gallery;
+    @Column(name = "PRIORITY") private Integer priority;
 
     @Enumerated(EnumType.STRING) ItemType itemType;
 
