@@ -27,3 +27,7 @@ spring:
 logging:
   level:
     me.silvernine: DEBUG
+
+
+file:
+  img: C:\img\

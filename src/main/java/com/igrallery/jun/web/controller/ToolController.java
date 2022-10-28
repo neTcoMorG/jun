@@ -20,11 +20,6 @@ public class ToolController {
 
     @PostMapping
     public String saveImages (@RequestPart List<Size> sizes, @RequestPart List<MultipartFile> images) {
-        for (Size size : sizes) {
-            log.info("Height: {}", size.getHeight());
-            log.info("Width: {}", size.getWidth());
-        }
-
         return "";
     }
 }

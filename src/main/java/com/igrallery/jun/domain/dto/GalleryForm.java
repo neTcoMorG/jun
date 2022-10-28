@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class Size {
-    @NotBlank private String type;
+public class GalleryForm {
+    @NotBlank private String name;
+    @NotBlank private String sub;
 }

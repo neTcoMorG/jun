@@ -1,4 +1,6 @@
 
+let sizes = [];
+
 function auto_scrollDown() {
     const preview = document.querySelector(".preview");
     preview.scrollTop = preview.scrollHeight;
@@ -30,7 +32,9 @@ function drop_handler(ev) {
     ev.target.appendChild(nodeCopy);
     formRoot.appendChild(formCopy);
 
+    sizes.push(getSize(id));
     auto_scrollDown();
+    console.log(sizes);
 }
    
 function dragend_handler(ev) {
@@ -63,5 +67,30 @@ function loadImage(input) {
             target.classList.add("img-attach");
         }
         render.readAsDataURL(input.files[0]);
+    }
+}
+
+/*
+    사이즈 배열과 사진을 전송하는거다 to 서버에
+
+*/
+function sendImage() {
+    
+}
+
+function getSize(itemName) {
+    switch(itemName) {
+        case "item1":
+            return {width: 1, height: 1};
+        case "item2":
+            return {width: 2, height: 1};
+        case "item3":
+            return {width: 1, height: 2};
+        case "item4":
+            return {width: 2, height: 2};
+        case "item5":
+            return {width: 3, height: 1};
+        default:
+            console.log("운지");
     }
 }
