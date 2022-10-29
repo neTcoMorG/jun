@@ -1,5 +1,9 @@
 
 spring:
+  servlet:
+    multipart:
+      maxFileSize: 30MB
+      maxRequestSize: 30MB
   http:
     encoding:
       charset: UTF-8
@@ -18,7 +22,7 @@ spring:
     #database-platform: org.hibernate.dialect.H2Dialect
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -27,7 +31,6 @@ spring:
 logging:
   level:
     me.silvernine: DEBUG
-
 
 file:
   img: C:\img\

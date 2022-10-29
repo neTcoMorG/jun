@@ -1,5 +1,5 @@
 
-
+const body = document.getElementsByTagName("body");
 const loc = document.querySelector(".article-content");
 const btn = document.querySelector('.intro-btn');
 
@@ -16,4 +16,13 @@ function modal_processor() {
     overlay.addEventListener('click', () => {
         modal.classList.add("hidden");
     });
+}
+
+function first() {
+    console.log("Hello, world");
+    if (sessionStorage.getItem("igallery") != undefined) {
+        loc.scrollIntoView({behavior: 'smooth', block: 'center'});
+        return;
+    }
+    sessionStorage.setItem("igallery", "HELLO");
 }

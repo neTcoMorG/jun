@@ -6,7 +6,6 @@ import com.igrallery.jun.domain.repository.GalleryRepository;
 import com.igrallery.jun.domain.service.FileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
