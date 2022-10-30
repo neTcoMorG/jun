@@ -176,8 +176,8 @@ textarea {
 .article-content {
     scroll-snap-align: start; /* 자식 적용 */
     width: 1080px;
-    height: 100vh;
-    margin: auto;   
+    height: 100%;
+    margin: auto; 
 }
 
 .article-header ul li {
@@ -246,14 +246,15 @@ textarea {
 
 .modal-overlay {
     position: absolute;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.8);
     width: 100%;
-    height:  100%;
+    height: 100%;
 }
 
 .modal-content {
     position: relative;
-    width: 30%;
+    width: 35%;
+    height: 60%;
 
     background-color: black;
     border: 1px solid white;
@@ -267,5 +268,9 @@ textarea {
 .modal-item {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+.modal-item button {
     width: 100%;
 }

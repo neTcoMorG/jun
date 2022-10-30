@@ -106,8 +106,8 @@ function sendImages() {
         data: formData,
         processData: false,
         contentType: false,
-        success: () => {
-            alert("성공");
+        success: (data) => {
+            window.location.href = data
         },
         error: (err) => {
             console.log(err)

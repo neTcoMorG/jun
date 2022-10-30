@@ -24,6 +24,7 @@ public class Image {
     @Column(name = "PRIORITY") private Integer priority;
 
     @Enumerated(EnumType.STRING) ItemType itemType;
+    @OneToOne(mappedBy = "image") private Metadata metadata;
 
     private String originalName;
     private String savedName;

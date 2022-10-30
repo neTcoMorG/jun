@@ -19,7 +19,6 @@ function modal_processor() {
 }
 
 function first() {
-    console.log("Hello, world");
     if (sessionStorage.getItem("igallery") != undefined) {
         loc.scrollIntoView({behavior: 'smooth', block: 'center'});
         return;

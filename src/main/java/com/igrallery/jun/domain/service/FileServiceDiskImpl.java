@@ -1,8 +1,10 @@
 package com.igrallery.jun.domain.service;
 
+import com.drew.imaging.ImageProcessingException;
 import com.igrallery.jun.domain.entity.Gallery;
 import com.igrallery.jun.domain.entity.Image;
 import com.igrallery.jun.domain.entity.ItemType;
+import com.igrallery.jun.domain.entity.Metadata;
 import com.igrallery.jun.domain.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,7 @@ import java.util.UUID;
 public class FileServiceDiskImpl implements FileService {
 
     private final ImageRepository imageRepository;
+    private final MetadataService metadataService;
 
     @Value("${file.img}") private String imgDir;
 
@@ -46,9 +49,11 @@ public class FileServiceDiskImpl implements FileService {
                     try {
                         safeImages.get(i).transferTo(new File(fullPath));
                         Image img = new Image(gallery, ItemType.valueOf(itemTypes.get(i)), i+1, originalName, savedName, fullPath);
-                        imageRepository.save(img);
+                        img = imageRepository.save(img);
+                        metadataService.apply(img);
                     }
                     catch (IOException e) { throw new IllegalStateException("파일 저장 오류"); }
+                    catch (ImageProcessingException e) { throw new IllegalStateException("METADATA 추출 에러"); }
                 }
             }
         }

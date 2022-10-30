@@ -22,6 +22,7 @@ public class GalleryController {
     private final GalleryService galleryService;
     private final GalleryRepository galleryRepository;
 
+    //@ResponseBody
     @PostMapping
     public String createGallery (@ModelAttribute @Valid GalleryForm form) {
         Long id = galleryService.create(form);

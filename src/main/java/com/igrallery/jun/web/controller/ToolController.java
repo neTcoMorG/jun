@@ -31,6 +31,7 @@ public class ToolController {
         return "tool";
     }
 
+    @ResponseBody
     @PostMapping("{id}")
     public String saveImages (@PathVariable(name = "id") Long gid, @RequestPart List<String> items,
                               @RequestPart List<MultipartFile> images,
@@ -42,6 +43,6 @@ public class ToolController {
         }
 
         fileService.saveImages(galleryOptional.get(), images, items);
-        return "redirect:/gallery/" + gid;
+        return "/gallery/" + gid;
     }
 }
