@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 public class Metadata {
+
     public Metadata() {}
     public Metadata(Image image, String name, String createDate, Double lat, Double lon, String device) {
         this.image = image;

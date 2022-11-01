@@ -116,6 +116,15 @@ video {
 
 @media screen and (min-width:1024px) {
 	/* Desktop */
+
+    .container {
+        scroll-snap-type: y mandatory; /* 부모 적용 */
+    }
+
+    .mob {
+        display: none;
+    }
+
     .intro {
         scroll-snap-align: start; /* 자식 적용 */
         width: 100%;
@@ -292,6 +301,9 @@ video {
 @media screen and (max-width:767px){ 
 
     /* Mobile */
+    :root {
+        --vh: 100%;
+     }
 
     .container {
         -ms-overflow-style: none; /* IE and Edge */
@@ -302,15 +314,16 @@ video {
     }
 
     .intro {
-        scroll-snap-align: start;
         width: 100%;
         height: 100vh;
+        height: var(--vh);
         overflow: hidden;
         position: relative;
     }
+
 	.intro-content {
         position: absolute;
-        top: 150px;
+        top: 140px;
         left: 0;
         display: flex;
         flex-direction: column;
@@ -320,7 +333,7 @@ video {
     }
     .title h1 {
         font-size: 65px;
-        margin-bottom: 12px;
+        margin-bottom: 20px;
         font-weight: bold;
     }
     .title span {
@@ -338,20 +351,54 @@ video {
     }
 
     .article-content {
-        scroll-snap-align: start; /* 자식 적용 */
-        height: 100%;
+        height: 100vh;
+        height: var(--vh);
         width: 100%;
     }
-    .article-header {
-        width: 100%;
-        margin: auto;
-        border-bottom: 1px solid gray;
-        margin-bottom: 80px;
-    }
-    .article-header ul {
-        width: 100%;
+
+    .article-header  {
         display: flex;
-        justify-content: space-evenly;
-        padding: 25px;
+        align-items: center;
+        width: 100%;
+        height:  60px;
+        position: sticky;
+        top: 0px;
+        background-color: rgba(0, 0, 0, 0.5 );
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .pc {
+        display: none;
+    }
+
+    .article-projects {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .project {
+        background-color: green;
+        margin-bottom: 20px;
+        height: 300px;
+        width: 100%;
+    }
+
+    .logo {
+        width: 70%;
+        font-weight: 400;
+        font-size: 24px;
+        font-family: 'Lobster', cursive;
+    }
+
+    .article-header-item {
+        width: 30%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .article-header-item img {
+        height: 50px;
+        width: 50px;
+        color: white;
     }
 }

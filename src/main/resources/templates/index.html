@@ -4,6 +4,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
     </style>
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/index.css" />
@@ -16,11 +17,11 @@
         <div class="intro-content fade-in-box ">
             <div class="title">
                 <h1>iGallery</h1>
-                    <span>
-                        사진은 단순한 그림이 아닙니다<br/>
-                        여러분의 추억이자 낭만입니다<br/>
-                        나만의 갤러리를 남들과 공유하세요
-                    </span> <br/>
+                <span>
+                    사진은 단순한 그림이 아닙니다<br/>
+                    여러분의 추억이자 낭만입니다<br/>
+                    나만의 갤러리를 남들과 공유하세요
+                </span> <br/>
                 <button class="intro-btn button1">
                     시작하기
                 </button>
@@ -29,14 +30,23 @@
         </div>
     </div>
     <div class="article-content">
-        <div class="article-header">
+        <div class="article-header pc">
             <ul>
                 <li>내 갤러리</li>
                 <li>탐색하기</li>
             </ul>
         </div>
+        <div class="article-header mob">
+            <div class="logo">
+                <h1>iGallery</h1>
+            </div>
+            <div class="article-header-item">
+                <h1>안녕1</h1>
+                <h1>안녕2</h1>
+            </div>
+        </div>
         <div class="article-projects">
-            <div class="project" onclick="modal_processor()">
+            <div class="project pc" onclick="modal_processor()">
                 <h1>+</h1>
             </div>
             <div th:each="gallery : ${gallerys}" class="project">
@@ -56,5 +66,12 @@
     </div>
 </div>
 <script src="/js/index.js"></script>
+<script>
+    const setVh = () => {
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`)
+    };
+    window.addEventListener('resize', setVh);
+    setVh();
+</script>
 </body>
 </html>
