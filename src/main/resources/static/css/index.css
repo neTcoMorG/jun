@@ -116,17 +116,11 @@ video {
 
 @media screen and (min-width:1024px) {
 	/* Desktop */
-
-    .container {
-        scroll-snap-type: y mandatory; /* 부모 적용 */
-    }
-
     .mob {
         display: none;
     }
 
     .intro {
-        scroll-snap-align: start; /* 자식 적용 */
         width: 100%;
         margin-bottom: 100px;
         overflow: hidden;
@@ -193,10 +187,12 @@ video {
     }
     
     .article-header {
+        position: sticky;
+        top: 0px;
+        background-color: rgba(0, 0, 0, 0.5 );
         width: 1080;
         padding-top: 15px;
         margin: auto;
-        border-bottom: 1px solid gray;
         margin-bottom: 80px;
     }
     
@@ -213,7 +209,6 @@ video {
     }
     
     .article-content {
-        scroll-snap-align: start; /* 자식 적용 */
         width: 1080px;
         height: 100%;
         margin: auto; 
@@ -333,11 +328,12 @@ video {
     }
     .title h1 {
         font-size: 65px;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
         font-weight: bold;
     }
     .title span {
         line-height: 20px;
+        font-size: 14px;
     }
 
     iframe {
@@ -385,20 +381,16 @@ video {
     }
 
     .logo {
-        width: 70%;
+        width: 80%;
         font-weight: 400;
         font-size: 24px;
         font-family: 'Lobster', cursive;
     }
 
     .article-header-item {
-        width: 30%;
+        width: 20%;
         display: flex;
-        justify-content: flex-end;
-    }
-    .article-header-item img {
-        height: 50px;
-        width: 50px;
-        color: white;
+        justify-content: space-between;
+        align-items: center;
     }
 }

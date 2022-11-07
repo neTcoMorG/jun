@@ -25,7 +25,7 @@ public class MetadataService {
     private final MetadataRepository metadataRepository;
 
     public Metadata parse (String imgPath) throws IOException, ImageProcessingException {
-        Metadata dto = new Metadata();
+        Metadata dto = null;
         Resource target = new FileSystemResource(imgPath);
 
         if (target.exists()) {
@@ -34,9 +34,9 @@ public class MetadataService {
             GpsDirectory gpsDirectory = metadata.getFirstDirectoryOfType(GpsDirectory.class);
 
             if (directory != null) {
-  //            log.info("DATE: {}", directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL));
-  //            log.info("MODEL: {}", directory.getString(ExifSubIFDDirectory.TAG_MODEL));
+                dto = new Metadata();
                 dto.setDate(directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL).toString());
+                dto.setDevice(directory.getString(ExifSubIFDDirectory.TAG_MODEL));
 
                 //GPS 가져오기
                 if (gpsDirectory != null) {
@@ -47,13 +47,16 @@ public class MetadataService {
                 }
             }
         }
+
         return dto;
     }
 
     public void apply (Image image) throws ImageProcessingException, IOException {
         Metadata entity = parse(image.getPath());
-        entity.setImage(image);
-        entity.setName(image.getOriginalName());
-        metadataRepository.save(entity);
+        if (entity != null) {
+            entity.setImage(image);
+            entity.setName(image.getOriginalName());
+            metadataRepository.save(entity);
+        }
     }
 }

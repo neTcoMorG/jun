@@ -25,5 +25,7 @@ public class Gallery {
     @Column(name = "SUB") private String sub;
     @Column(name = "CREATED_DATE") @CreatedDate private LocalDateTime createdDate;
 
+    @Column(name = "THUMBNAIL") private String thumbnail;
+
     @OneToMany(mappedBy = "gallery") private List<Image> images;
 }

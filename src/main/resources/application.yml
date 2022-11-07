@@ -17,7 +17,7 @@ spring:
     url: jdbc:mysql://localhost/igallery?serverTimezone=UTC&characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: mymaker-mysql
+    password: mymaker
 
   jpa:
     #database-platform: org.hibernate.dialect.H2Dialect
@@ -35,3 +35,4 @@ logging:
 
 file:
   img: C:\img\
+  thumbnail: C:\thumbnail\

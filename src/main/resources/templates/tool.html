@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/manage.css" />
 </head>
 <body>
-    <div class="container">
+    <div th:id="${id}" class="container">
         <div class="preview" id="dest_copy" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></div>
         <div class="item-controller">
             <div class="item-box">
@@ -71,4 +71,5 @@
     <script type="text/javascript" src="/js/manage.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
 </body>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </html>

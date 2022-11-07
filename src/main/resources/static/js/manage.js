@@ -92,25 +92,53 @@ function getSize(itemName) {
 }
 
 function sendImages() {
-    const currentUrl = window.location.href;
-    const gid = currentUrl.split('tool/')[1];
+    screenShot($(".preview"));
+}
 
-    let formData = new FormData($('#hidden-form-obj')[0]);
-    formData.append("items", new Blob([JSON.stringify(sizes)], {
-        type: "application/json"
-    }));
+function screenShot (target) {
+    var class_id = $('.container').attr('id');
+	if (target != null && target.length > 0) {
+		var t = target[0];
+		html2canvas(t).then(function(canvas) {
+			var myImg = canvas.toDataURL("image/png");
+			myImg = myImg.replace("data:image/png;base64,", "");
 
-    $.ajax({
-        type: 'post',
-        url: '/tool/' + gid,
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: (data) => {
-            window.location.href = data
-        },
-        error: (err) => {
-            console.log(err)
-        }
-    });
+			$.ajax({
+				type : "POST",
+				data : {
+					"imgSrc" : myImg
+				},
+				dataType : "text",
+                async: false,
+				url : "/gallery/thumbnail/" + class_id,
+				success : function(data) {
+                    const currentUrl = window.location.href;
+                    const gid = currentUrl.split('tool/')[1];
+                
+                    let formData = new FormData($('#hidden-form-obj')[0]);
+                    formData.append("items", new Blob([JSON.stringify(sizes)], {
+                        type: "application/json"
+                    }));
+
+                    $.ajax({
+                        async: false,
+                        type: 'post',
+                        url: '/tool/' + class_id,
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: (data) => {
+                            window.location.href = data
+                        },
+                        error: (err) => {
+                            console.log(err)
+                        }
+                    });
+				},
+				error : function(a, b, c) {
+					alert("error");
+				}
+			});
+		});
+	}
 }
