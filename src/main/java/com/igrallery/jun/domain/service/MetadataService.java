@@ -5,7 +5,6 @@ import com.drew.imaging.ImageProcessingException;
 import com.drew.metadata.Directory;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.drew.metadata.exif.GpsDirectory;
-import com.igrallery.jun.domain.dto.MetadataDto;
 import com.igrallery.jun.domain.entity.Image;
 import com.igrallery.jun.domain.entity.Metadata;
 import com.igrallery.jun.domain.repository.MetadataRepository;
@@ -47,7 +46,6 @@ public class MetadataService {
                 }
             }
         }
-
         return dto;
     }
 

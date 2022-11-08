@@ -9,7 +9,6 @@ import javax.persistence.*;
 public class Image {
 
     protected Image() {}
-
     public Image(Gallery gallery, ItemType itemType, Integer priority, String originalName, String savedName, String path) {
         this.itemType = itemType;
         this.gallery = gallery;

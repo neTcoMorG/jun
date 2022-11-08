@@ -38,16 +38,16 @@ public class ImageSender {
     public ResponseEntity<Resource> send (@PathVariable String id) throws FileNotFoundException {
         try {
             Resource resource = new FileSystemResource(imgDir + id);
+
             if (resource.exists()) {
                 HttpHeaders header = new HttpHeaders();
                 Path filePath = Paths.get(imgDir + id);
                 header.add("Content-Type", Files.probeContentType(filePath));
+
                 return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
             }
          }
-        catch (Exception e) {
-            throw new FileNotFoundException("이미지 파일이 없음");
-        }
+        catch (Exception e) { throw new FileNotFoundException("이미지 파일이 없음"); }
         throw new FileNotFoundException("이미지 파일이 없음");
     }
 
@@ -56,7 +56,6 @@ public class ImageSender {
         Optional<Image> image = imageRepository.findById(id);
 
         if (image.isPresent() && image.get().getMetadata() != null) {
-            log.info("META {}", mappedToMetaObject(image.get().getMetadata()));
             return ResponseEntity.ok(mappedToMetaObject(image.get().getMetadata()));
         }
         return ResponseEntity.ok("empty");
